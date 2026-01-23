@@ -44,7 +44,7 @@
                                 👁️ Ver
                             </a>
 
-                            @can('admin-only')
+                            @if(trim(auth()->user()->role) == 'admin')
                                 <a href="{{ route('libros.edit', $libro->id) }}" class="btn btn-sm btn-warning" title="Editar">
                                     ✏️ Editar
                                 </a>

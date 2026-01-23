@@ -22,7 +22,7 @@
             <div class="mt-4">
                 <a href="{{ route('libros.index') }}" class="btn btn-secondary">Volver a la lista</a>
 
-                @if(auth()->user()->role === 'admin')
+                @if(trim(auth()->user()->role) == 'admin')
                     
                     <a href="{{ route('libros.edit', $libro->id) }}" class="btn btn-warning">Editar</a>
     
