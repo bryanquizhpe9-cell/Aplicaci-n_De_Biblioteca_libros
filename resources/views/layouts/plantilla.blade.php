@@ -31,16 +31,32 @@
                     </li>
                 </ul>
 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <ul class="navbar-nav ms-auto">
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Iniciar Sesión</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
+                        </li>
+
+                             @else
+                        <li class="nav-item">
+                            <span class="nav-link text-warning">Conectado {{ Auth::user()->name }}</span>
+                        </li>
+
+                        <li class="nav-item">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="btn btn-link nav-link border-0" style="text-decoration: none;">
-                                🚪 Cerrar Sesión
+                                🚪 Salir
                             </button>
                         </form>
-                    </li>
-                </ul>
+                        </li>
+                        @endguest
+
+                    </ul>
             </div>
         </div>
     </nav>
@@ -51,6 +67,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-</html>y>
 </html>
