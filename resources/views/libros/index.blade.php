@@ -5,10 +5,13 @@
         <a href="{{ url('/') }}" class="btn btn-dark">
             🏠 Ir al Inicio
         </a>
-
+        @auth
+        @if(trim(auth()->user()->role) == 'admin')
         <a href="{{ route('libros.create') }}" class="btn btn-primary">
             ➕ Nuevo Libro
         </a>
+        @endif
+        @endauth
     </div>
 
     <h2 class="mb-4">📚 Lista de Gestión de Libros</h2>

@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Libro;
 
 class LibroController extends Controller
 {
     
     public function inicio()
     {
-        $libros = DB::table('libros')->latest()->get(); 
-        return view('bienvenido', compact('libros'));
+        $favoritos = Libro::where('es_favorito', true)->get();
+        $recientes = Libro::latest()->take(6)->get();
+        return view('bienvenido', compact('favoritos', 'recientes'));
     }
 
 
@@ -88,14 +90,14 @@ class LibroController extends Controller
        
         return redirect()->route('libros.index');
     }
+
+    public function marcarFavorito($id){
+    $libro = Libro::findOrFail($id);
+    $libro->es_favorito = !$libro->es_favorito; 
+    $libro->save();
+    return back()->with('success', 'Estado de favorito actualizado');
+    }
 }
 
 
-
-//index = vista principal
-//create = vista formulario
-// store = Crear registros
-//show = detalle registros
-//edit = editar registros
-//delete = eliminar registros
 

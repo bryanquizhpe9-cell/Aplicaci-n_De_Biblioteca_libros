@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -26,11 +27,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/libros') }}">Lista de Libros</a>
                     </li>
+                    @if(trim(auth()->user()->role) == 'admin')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/libros/crear') }}">Agregar Libro</a>
+                        <a class="nav-link" href="{{ url('/libros/crear') }}">Agregar Libro (Admin)</a> 
                     </li>
+                    @endif
                 </ul>
-
                     <ul class="navbar-nav ms-auto">
                         @guest
                         <li class="nav-item">

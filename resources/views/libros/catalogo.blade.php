@@ -45,7 +45,6 @@
 </div>
 
 <style>
-    /* Efecto de zoom suave al pasar el mouse por las tarjetas */
     .hover-zoom:hover {
         transform: scale(1.02);
         transition: transform 0.3s ease;
